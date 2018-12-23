@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>Mailchimp Signupform Module</name>
+    <author>Manfred Milchrahm</author>
+    <creationDate>20. Dezember 2018</creationDate>
+    <version>1.0.0</version>
+    <description>Module that shows a Mailchimp signup form</description>
+    <files>
+        <filename>mod_joomlatomailchimp.xml</filename>
+        <filename module="mod_joomlatomailchimp">mod_joomlatomailchimp.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>subscribe.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <config>
+      <fields name="params">
+          <fieldset name="basic">                            
+				      <field
+					      name="moduleclass_sfx"
+					      type="text"
+					      label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					      description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+				      />
+				      
+				      <field
+					      name="api_key"
+					      type="text"
+					      label="Mailchimp API Key"
+					      description="Mailchimp API Key"
+				      />
+				      
+				      <field
+					      name="list_id"
+					      type="text"
+					      label="Mailchimp List ID"
+					      description="Can be found at 'Lists > ExampleList > Settings > List name and defaults'"
+				      />
+				      
+				      <field
+					      name="server_id"
+					      type="text"
+					      label="Mailchimp Server ID"
+					      description="The first part of your mailchimp url, like 'us18'"
+				      />
+
+              
+				      <field
+					      name="layout"
+					      type="modulelayout"
+					      label="JFIELD_ALT_LAYOUT_LABEL"
+					      description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				      />
+
+          </fieldset>
+
+      </fields>
+    
+    </config>
+</extension>
