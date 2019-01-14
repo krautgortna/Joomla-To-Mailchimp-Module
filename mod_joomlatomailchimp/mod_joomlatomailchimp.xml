@@ -44,6 +44,13 @@
 					      label="Mailchimp Server ID"
 					      description="The first part of your mailchimp url, like 'us18'"
 				      />
+				      
+				      <field
+					      name="data_protection_policy"
+					      type="text"
+					      label="Link to Data Protection Policy"
+					      description="e.g. '/data-protection-policy'"
+				      />
 
               
 				      <field

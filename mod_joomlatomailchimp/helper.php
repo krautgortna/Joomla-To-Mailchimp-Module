@@ -10,7 +10,13 @@ class ModJoomlaToMailchimpHelper
 		  $email  = $input->get('email', '', 'raw');		  
 		  $email = rawurldecode($email);
 		  
-        
+		  $fname  = $input->get('fname', '', 'raw');		  
+		  $fname = rawurldecode($fname);
+		  $fname = filter_var($fname, FILTER_SANITIZE_STRING);
+		  
+		  $lname  = $input->get('lname', '', 'raw');		  
+		  $lname = rawurldecode($lname);
+		  $lname = filter_var($lname, FILTER_SANITIZE_STRING);		  
 		  
 	    $module = JModuleHelper::getModule('mod_joomlatomailchimp');
       $params = json_decode($module->params);
@@ -25,8 +31,7 @@ class ModJoomlaToMailchimpHelper
 		  else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) { //validate email address - check if is a valid email address
 			  $status = "error";
 			  $message = "You have entered an invalid email address!";
-		  }
- 
+		  }  
 	    else if( !isset($params->api_key)){
 		    $status = "error";
 		    $message = "API Key missing. Please contact webmaster.";
@@ -51,7 +56,9 @@ class ModJoomlaToMailchimpHelper
         try {              
           $url = 'https://'. $server .'.api.mailchimp.com/3.0/lists/'. $listId .'/members';
           $data = '{"email_address":"'. $email .'", "status":"subscribed", "merge_fields": {
-           "OPTIN": "'. date('d-m-Y') .'"
+            "OPTIN": "'. date('d-m-Y') .'",
+            "FNAME": "'. $fname .'",
+            "LNAME": "'. $lname .'"
           }
           }';
           $mailchimp_return = json_decode(ModJoomlaToMailchimpHelper::CallAPI('POST', $url, $apiKey, $data));
